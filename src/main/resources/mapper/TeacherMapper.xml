@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.netinnet.demo4.mapper.TeacherMapper">
+
+<!-- 查询所有教师 -->
+    <select id="getTeacherAll" resultType="cn.netinnet.demo4.entity.TeacherEntity">
+        SELECT *
+        FROM nin_teacher
+    </select>
+</mapper>
