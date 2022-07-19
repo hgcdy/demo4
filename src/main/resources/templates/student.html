@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{css/student.css}">
+    <script th:src="@{js/jQuery3.6.0.js}"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src="@{js/student.js}"></script>
+</head>
+<body>
+<!-- Single button -->
+
+<div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle"
+            data-toggle="dropdown">
+        班级 <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="javaScript:void(0)" id="0">所有</a></li>
+        <li th:each="class: ${classList}" th:id="${class.id}">
+            <a  th:text="${class.className}" href="javaScript:void(0)"></a>
+        </li>
+    </ul>
+</div>
+
+<div class="card-body">
+    <table class="table table-striped" id="table">
+        <tr>
+            <td>学生id</td>
+            <td>学生姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>班级id</td>
+            <td>
+                操作
+                <button type="button" class="btn btn-info" id="insert">插入</button>
+            </td>
+        </tr>
+        <tr th:each="student: ${studentList}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.studentName}"></td>
+            <td th:text="${student.sex}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.classId}"></td>
+            <td>
+                <button type="button" class="btn btn-info update">编辑</button>
+                <button type="button" class="btn btn-info delete">删除</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!--编辑-->
+<div class="card-body" id="div1">
+    <table  class="table table-striped" >
+        <tr>
+            <td>用户id</td>
+            <td><p></p></td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>班级id</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>修改者id</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <button type="button" class="btn btn-info" id="confirm">确定</button>
+                <button type="button" class="btn btn-info" id="cancel">取消</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!--插入-->
+<div class="card-body" id="div2">
+    <table  class="table table-striped" >
+        <tr>
+            <td>姓名</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>班级id</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>创建者id</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <button type="button" class="btn btn-info" id="confirm1">确定</button>
+                <button type="button" class="btn btn-info" id="cancel1">取消</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

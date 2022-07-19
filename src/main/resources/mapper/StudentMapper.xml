@@ -17,6 +17,67 @@
         ORDER BY class_id
     </select>
 
+    <!--    查询指定学生-->
+        <select id="getStudentId" resultType="cn.netinnet.demo4.entity.StudentEntity">
+            SELECT *
+            FROM nin_student
+            WHERE id = #{id}
+        </select>
+
+<!-- 删除指定id的学生 -->
+    <delete id="delStudentId">
+        DELETE
+        FROM nin_student
+        WHERE id = #{id}
+    </delete>
+
+
+    <!--修改用户信息-->
+    <update id="updateStudent">
+        UPDATE nin_student
+        SET
+        <if test="studentName != null">
+            student_name = #{studentName},
+        </if>
+        <if test="sex != null">
+             sex = #{sex},
+        </if>
+        <if test="age != null">
+             age = #{age},
+        </if>
+        <if test="classId != null">
+              class_id = #{classId},
+        </if>
+        <if test="delFlag != null">
+              del_flag = #{delFlag},
+        </if>
+        modify_time = #{modifyTime},
+        modify_user_id = #{modifyUserId}
+        WHERE id = #{id}
+    </update>
+
+    <!--插入记录-->
+    <insert id="insertStudent">
+        INSERT INTO nin_student(student_name,
+                            sex,
+                            age,
+                            class_id,
+                            del_flag,
+                            create_time,
+                            create_user_id,
+                            modify_time,
+                            modify_user_id)
+        VALUES (#{studentName},
+                #{sex},
+                #{age},
+                #{classId},
+                #{delFlag},
+                #{createTime},
+                #{createUserId},
+                #{modifyTime},
+                #{modifyUserId})
+
+    </insert>
 
 </mapper>
 

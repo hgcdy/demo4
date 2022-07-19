@@ -26,4 +26,31 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.getStudentAll();
     }
 
+    @Override
+    public StudentEntity getStudentId(Integer id) {
+        return studentMapper.getStudentId(id);
+    }
+
+    @Override
+    public int delStudentId(Integer id) {
+        return studentMapper.delStudentId(id);
+    }
+
+    @Override
+    public int updateStudent(StudentEntity studentEntity) {
+        return studentMapper.updateStudent(studentEntity);
+    }
+
+    @Override
+    public int insertStudent(StudentEntity studentEntity) {
+        //插入时判断是否相同
+        List<StudentEntity> studentAll = studentMapper.getStudentAll();
+        for (StudentEntity s:
+             studentAll) {
+            if (studentEntity.getStudentName().equals(s.getStudentName())){
+                return 0;
+            }
+        }
+        return studentMapper.insertStudent(studentEntity);
+    }
 }

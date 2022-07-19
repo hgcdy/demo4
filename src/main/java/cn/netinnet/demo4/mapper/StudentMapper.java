@@ -14,4 +14,16 @@ public interface StudentMapper {
     //查询所有学生
     public List<StudentEntity> getStudentAll();
 
+    //查询指定id的学生
+    public StudentEntity getStudentId(Integer id);
+
+    //删除指定id的学生
+    public int delStudentId(Integer id);
+
+    //修改指定学生信息
+    public int updateStudent(StudentEntity studentEntity);
+
+    //插入记录
+    public int insertStudent(StudentEntity studentEntity);
+
 }

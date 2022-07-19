@@ -23,17 +23,4 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
-    $("#student").click(function (){
-        window.location.href = "/index";
-    })
-    $("#teacher").click(function (){
-        window.location.href = "/index";
-    })
-    $("#login").click(function (){
-        window.location.href = "/login";
-    })
-    $("#index").click(function (){
-        window.location.href = "/index";
-    })
-
 });

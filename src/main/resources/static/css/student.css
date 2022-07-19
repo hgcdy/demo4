@@ -1,0 +1,13 @@
+#div1,#div2 {
+    /*height: 470px;*/
+    width: 450px;
+    line-height: 30px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: #f2e7c3;
+    display: none;
+}

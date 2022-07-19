@@ -9,6 +9,7 @@
         <title>Login - SB Admin</title>
         <script type="text/javascript" th:src="@{js/jQuery3.6.0.js}"></script>
         <link th:href="@{css/styles.css}" rel="stylesheet" />
+        <script th:src="@{js/login.js}"></script>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
@@ -23,12 +24,12 @@
                                     <div class="card-body">
                                         <form>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
+                                                <input class="form-control" id="userCode" type="email"/>
+                                                <label for="userCode">用户编号</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                                <label for="inputPassword">Password</label>
+                                                <input class="form-control" id="userPassword" type="password"/>
+                                                <label for="userPassword">密码</label>
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
@@ -36,7 +37,7 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="#" id="index">Login</a>
+                                                <a class="btn btn-primary" href="javaScript:void(0);" id="index">Login</a>
                                             </div>
                                         </form>
                                     </div>
