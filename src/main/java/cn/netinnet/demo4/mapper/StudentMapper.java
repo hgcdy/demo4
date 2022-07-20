@@ -26,4 +26,9 @@ public interface StudentMapper {
     //插入记录
     public int insertStudent(StudentEntity studentEntity);
 
+    //检索查询
+    public List<StudentEntity> getStudentSearch(StudentEntity studentEntity);
+
+    public List<StudentEntity> getStudentPaging(Integer count);
+
 }

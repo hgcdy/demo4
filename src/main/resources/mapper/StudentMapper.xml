@@ -9,20 +9,24 @@
         SELECT *
         FROM nin_student
         WHERE class_id = #{classId}
+        AND del_flag = "0"
     </select>
+
 <!--    查询所有学生-->
     <select id="getStudentAll" resultType="cn.netinnet.demo4.entity.StudentEntity">
         SELECT *
         FROM nin_student
+        WHERE del_flag = "0"
         ORDER BY class_id
     </select>
 
-    <!--    查询指定学生-->
-        <select id="getStudentId" resultType="cn.netinnet.demo4.entity.StudentEntity">
-            SELECT *
-            FROM nin_student
-            WHERE id = #{id}
-        </select>
+    <!--查询指定id学生-->
+    <select id="getStudentId" resultType="cn.netinnet.demo4.entity.StudentEntity">
+        SELECT *
+        FROM nin_student
+        WHERE id = #{id}
+        AND del_flag = "0"
+    </select>
 
 <!-- 删除指定id的学生 -->
     <delete id="delStudentId">
@@ -78,6 +82,38 @@
                 #{modifyUserId})
 
     </insert>
+
+    <!--    查询指定学生-->
+    <select id="getStudentSearch" resultType="cn.netinnet.demo4.entity.StudentEntity">
+        SELECT *
+        FROM nin_student
+        <where>
+        del_flag = "0"
+        <if test="id != null">
+             AND id = #{id}
+        </if>
+        <if test="studentName != ''">
+             AND student_name = #{studentName}
+       </if>
+        <if test="sex != ''">
+            AND sex = #{sex}
+        </if>
+        <if test="age != null">
+             AND age = #{age}
+        </if>
+        <if test="classId != null">
+             AND class_id = #{classId}
+        </if>
+        </where>
+    </select>
+
+        <!--分页查询学生-->
+    <select id="getStudentPaging" resultType="cn.netinnet.demo4.entity.StudentEntity">
+        SELECT *
+        FROM nin_student
+        WHERE del_flag = "0"
+        LIMIT #{count},10
+    </select>
 
 </mapper>
 

@@ -21,6 +21,8 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
+    //当前页码
+    private static Integer COUNT;
 
     @Autowired
     private StudentService studentService;
@@ -45,7 +47,7 @@ public class StudentController {
 
     //删除
     @PostMapping("delete")
-    public ResultModel indexDelete(Integer id) {
+    public ResultModel studentDelete(Integer id) {
         int i = studentService.delStudentId(id);
         if (i > 0) {
             return ResultModel.ok();
@@ -55,7 +57,7 @@ public class StudentController {
 
     //修改
     @PostMapping("update")
-    public ResultModel indexUpdate(StudentEntity studentEntity) {
+    public ResultModel studentUpdate(StudentEntity studentEntity) {
         Date date = new Date();
         studentEntity.setModifyTime(date);
         int i = studentService.updateStudent(studentEntity);
@@ -67,7 +69,7 @@ public class StudentController {
 
     //查询单条记录
     @PostMapping("select")
-    public ResultModel indexSelect(Integer id) {
+    public ResultModel studentSelect(Integer id) {
         StudentEntity student = studentService.getStudentId(id);
         if (student == null) {
             return ResultModel.error(ResultStatus.SELECT_ERROR);
@@ -77,7 +79,7 @@ public class StudentController {
 
     //插入单条记录
     @PostMapping("insert")
-    public ResultModel indexInsert(StudentEntity studentEntity) {
+    public ResultModel studentInsert(StudentEntity studentEntity) {
         Date date = new Date();
         studentEntity.setModifyUserId(studentEntity.getCreateUserId());
         studentEntity.setModifyTime(date);
@@ -94,4 +96,18 @@ public class StudentController {
             return ResultModel.error(ResultStatus.INSERT_ERROR);
         }
     }
+
+    //检索查询
+    @PostMapping("search")
+    public List<StudentEntity> studentSearch(StudentEntity studentEntity){
+        List<StudentEntity> studentList = studentService.getStudentSearch(studentEntity);
+        return studentList;
+    }
+
+    //分页查询
+    @PostMapping("paging")
+    public List<StudentEntity> studentPaging(Integer count){
+        return studentService.getStudentPaging(count);
+    }
+
 }

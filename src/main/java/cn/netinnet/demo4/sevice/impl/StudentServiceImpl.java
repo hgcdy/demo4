@@ -53,4 +53,17 @@ public class StudentServiceImpl implements StudentService {
         }
         return studentMapper.insertStudent(studentEntity);
     }
+
+    //检索查询
+    @Override
+    public List<StudentEntity> getStudentSearch(StudentEntity studentEntity){
+        List<StudentEntity> studentList = studentMapper.getStudentSearch(studentEntity);
+        return studentList;
+    }
+
+    //分页查询
+    @Override
+    public List<StudentEntity> getStudentPaging(Integer count) {
+        return studentMapper.getStudentPaging(((count - 1) * 10));
+    }
 }
