@@ -1,17 +1,28 @@
-
-
 $(document).ready(function () {
-
-    var count = 1;
+    //获取页数
+    var count = parseInt($("#paging input").val())
+    //获取班级id
+    var id = $("#search ul").attr("id");
+    //获取记录总数
+    var sum;
+    $.ajax({
+        url:"/student/sum",
+        dataType: "json",
+        type: "post",
+        data: {classId: id},
+        success(data){
+            sum = data;
+        }
+    })
 
     //按钮禁用
     function stop(){
-        $("#insert, .delete, .update, #submit, #classChoice").attr('disabled',true);
+        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled',true);
     }
 
     //按钮启用
     function start(){
-        $("#insert, .delete, .update, #submit, #classChoice").attr('disabled',false);
+        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled',false);
 
     }
 
@@ -222,7 +233,10 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     if (data.code == 200) {
-                        window.location.href = "/student";
+                        if (id == undefined || id == null) {
+                            window.location.href = "/student?count=" + count;
+                        } else
+                            window.location.href = "/student?classId=" + id + "&count=" + count;
                     } else {
                         alert("插入失败!");
                     }
@@ -288,125 +302,49 @@ $(document).ready(function () {
         })
     })
 
-    // //切换班级
-    // $("ul li").click(function () {
-    //     var id = $(this).attr("id");
-    //     if (id == undefined) {
-    //         window.location.href = "/student";
-    //     } else
-    //         window.location.href = "/student?classId=" + id
-    // })
+    //切换班级
+    $("ul li").click(function () {
+        id = $(this).attr("id");
+        if (id == undefined || id == null) {
+            window.location.href = "/student";
+        } else
+            window.location.href = "/student?classId=" + id;
+    })
 
     //切换页码
     //点击上一页
     $("#paging button:first").click(function (){
         if (count > 1){
             count = count - 1;
+            $("#paging input").val(count);
+            if (id == undefined || id == null) {
+                window.location.href = "/student?count=" + count;
+            } else
+                window.location.href = "/student?classId=" + id + "&count=" + count;
         }
-
     })
     //点击下一页
     $("#paging button:last").click(function (){
-        count = count + 1;
+        if (count < (sum / 3)) {
+            count = count + 1;
+            $("#paging input").val(count);
+            if (id == undefined || id == null) {
+                window.location.href = "/student?count=" + count;
+            } else
+                window.location.href = "/student?classId=" + id + "&count=" + count;
+        }
 
     })
     //跳转
     $("#paging button:eq(1)").click(function (){
-        var v = $("#paging input").val();
-        if (v != null && v < 0){
+        var v = parseInt($("#paging input").val());
+        if (v != null && v > 0 && v < (sum / 3 + 1)){
             count = v;
+            if (id == undefined || id == null) {
+                window.location.href = "/student?count=" + count;
+            } else
+                window.location.href = "/student?classId=" + id + "&count=" + count;
         }
-
     })
-
-
-
-
-
-    // //删除
-    // $(".delete").click(function () {
-    //     $(this).parent().parent().attr("id", "tr");
-    //     var delId = $("#tr td:first").text();
-    //     $.ajax({
-    //         url: "/student/delete",
-    //         dataType: "json",
-    //         type: "post",
-    //         data: {id: delId},
-    //         success: function (data) {
-    //             if (data.code == 200) {
-    //                 $("#tr").empty();
-    //             }
-    //         }
-    //     })
-    // })
-
-    //编辑
-    // $(".update").click(function () {
-    //     $(this).parent().parent().attr("id", "tr");
-    //     var id = $("#tr td:first").text();
-    //     $.ajax({
-    //         url: "/student/select",
-    //         dataType: "json",
-    //         type: "post",
-    //         data: {
-    //             id: id
-    //         },
-    //         //获取原本的数据
-    //         success(data) {
-    //             $("#div1").attr("style", "display: block;")
-    //             var student = data.data;
-    //             if (data.code == 200) {
-    //                 $("#div1 p").text(student.id);
-    //                 var input = $("#div1 input");
-    //                 $(input[0]).val(student.studentName);
-    //                 $(input[1]).val(student.sex);
-    //                 $(input[2]).val(student.age);
-    //                 $(input[3]).val(student.classId);
-    //                 $(input[4]).val(student.modifyUserId);
-    //             }
-    //             //对记录进行修改
-    //             //点击确认将数据返回
-    //             $("#confirm").click(function () {
-    //                 $.ajax({
-    //                     url: "/student/update",
-    //                     dataType: "json",
-    //                     type: "post",
-    //                     //修改后的数据
-    //                     data: {
-    //                         id: student.id,
-    //                         studentName: $(input[0]).val(),
-    //                         sex: $(input[1]).val(),
-    //                         age: $(input[2]).val(),
-    //                         classId: $(input[3]).val(),
-    //                         modifyUserId: $(input[4]).val(),
-    //                     },
-    //                     success: function (data) {
-    //                         if (data.code == 200) {
-    //                             // window.location.href = "/student";
-    //                             var tds = $("#tr td");
-    //                             $(tds[1]).text($(input[0]).val());
-    //                             $(tds[2]).text($(input[1]).val());
-    //                             $(tds[3]).text($(input[2]).val());
-    //                             $(tds[4]).text($(input[3]).val());
-    //                             $("#tr").removeAttr("id");
-    //                             $("#div1").attr("style", "display: none;")
-    //                         } else {
-    //                             alert("修改失败！")
-    //                         }
-    //                     }
-    //                 })
-    //             })
-    //             //点击取消
-    //             $("#cancel").click(function () {
-    //                 $("#div1").attr("style", "display: none;")
-    //                 $("#tr").removeAttr("id");
-    //             })
-    //         }
-    //     })
-    //     $("input").val("");
-    //     $("#confirm,#cancel").unbind("click");
-    // })
 })
-
-
 

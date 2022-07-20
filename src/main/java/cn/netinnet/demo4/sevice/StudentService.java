@@ -29,6 +29,13 @@ public interface StudentService {
     //检索查询
     public List<StudentEntity> getStudentSearch(StudentEntity studentEntity);
 
+    //分页所有学生
     public List<StudentEntity> getStudentPaging(Integer count);
+
+    //分页，班级学生
+    public List<StudentEntity> getStudentPagingClassId(Integer classId, Integer count);
+
+    //查询总条数
+    public Integer getSum(Integer classId);
 
 }

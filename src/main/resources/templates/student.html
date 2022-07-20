@@ -21,7 +21,7 @@
                 data-toggle="dropdown" id="classChoice">
             班级 <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <ul class="dropdown-menu" role="menu" th:id="${classId}">
             <li><a href="javaScript:void(0)" id="0">所有</a></li>
             <li th:each="class: ${classList}" th:id="${class.id}">
                 <a  th:text="${class.className}" href="javaScript:void(0)"></a>
@@ -80,7 +80,7 @@
 <!--    分页-->
     <div id="paging">
         <button type="button" class="btn btn-info">上一页</button>
-        跳转至:<input type="text">
+        跳转至:<input type="text" th:value="${count}">
         <button type="button" class="btn btn-info">确定</button>
         <button type="button" class="btn btn-info">下一页</button>
     </div>

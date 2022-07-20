@@ -29,6 +29,12 @@ public interface StudentMapper {
     //检索查询
     public List<StudentEntity> getStudentSearch(StudentEntity studentEntity);
 
+    //分页查询所有
     public List<StudentEntity> getStudentPaging(Integer count);
 
+    //分页查询班级学生
+    public List<StudentEntity> getStudentPagingClassId(Integer classId, Integer count);
+
+    //查询总条数
+    public Integer getSum(Integer classId);
 }

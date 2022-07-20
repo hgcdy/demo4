@@ -112,8 +112,27 @@
         SELECT *
         FROM nin_student
         WHERE del_flag = "0"
-        LIMIT #{count},10
+        ORDER BY class_id
+        LIMIT #{count},3
     </select>
 
+    <!--    根据班级id获取该班级的所有学生（分页）-->
+    <select id="getStudentPagingClassId" resultType="cn.netinnet.demo4.entity.StudentEntity">
+        SELECT *
+        FROM nin_student
+        WHERE class_id = #{classId}
+        AND del_flag = "0"
+        LIMIT #{count},3
+    </select>
+
+<!--     查询总条数 -->
+    <select id="getSum" resultType="java.lang.Integer">
+        SELECT COUNT(id) AS sum
+        FROM nin_student
+        WHERE del_flag = "0"
+        <if test="classId != null">
+            AND class_id = #{classId}
+        </if>
+    </select>
 </mapper>
 

@@ -29,17 +29,40 @@ public class StudentController {
     @Autowired
     private ClassService classService;
 
+//    //根据班级id切换
+//    @GetMapping("")
+//    public ModelAndView getStudentClassId(Integer classId) {
+//        ModelAndView modelAndView = new ModelAndView("/student");
+//        List<ClassEntity> classList = classService.getClassAll();
+//        List<StudentEntity> studentList;
+//        if (classId == null){
+//            studentList = studentService.getStudentAll();
+//        }else{
+//            studentList = studentService.getStudentClassId(classId);
+//        }
+//        modelAndView.addObject("studentList", studentList);
+//        modelAndView.addObject("classList", classList);
+//        return modelAndView;
+//    }
+
     //根据班级id切换
     @GetMapping("")
-    public ModelAndView getStudentClassId(Integer classId) {
+    public ModelAndView getStudentClassId(Integer classId, Integer count) {
         ModelAndView modelAndView = new ModelAndView("/student");
         List<ClassEntity> classList = classService.getClassAll();
         List<StudentEntity> studentList;
-        if (classId == null){
-            studentList = studentService.getStudentAll();
-        }else{
-            studentList = studentService.getStudentClassId(classId);
+        if (count == null){
+            count = 1;
         }
+        if (classId == null){
+//            studentList = studentService.getStudentAll();
+            studentList = studentService.getStudentPaging(count);
+        }else{
+//            studentList = studentService.getStudentClassId(classId);
+            studentList = studentService.getStudentPagingClassId(classId, count);
+        }
+        modelAndView.addObject("classId", classId);
+        modelAndView.addObject("count", count);
         modelAndView.addObject("studentList", studentList);
         modelAndView.addObject("classList", classList);
         return modelAndView;
@@ -108,6 +131,12 @@ public class StudentController {
     @PostMapping("paging")
     public List<StudentEntity> studentPaging(Integer count){
         return studentService.getStudentPaging(count);
+    }
+
+    //查询总数
+    @PostMapping("sum")
+    public Integer getSum(Integer classId){
+        return studentService.getSum(classId);
     }
 
 }

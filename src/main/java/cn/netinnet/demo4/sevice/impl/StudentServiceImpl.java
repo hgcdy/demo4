@@ -4,6 +4,7 @@ import cn.netinnet.demo4.entity.StudentEntity;
 import cn.netinnet.demo4.mapper.StudentMapper;
 import cn.netinnet.demo4.sevice.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -64,6 +65,18 @@ public class StudentServiceImpl implements StudentService {
     //分页查询
     @Override
     public List<StudentEntity> getStudentPaging(Integer count) {
-        return studentMapper.getStudentPaging(((count - 1) * 10));
+        return studentMapper.getStudentPaging(((count - 1) * 3));
+    }
+
+    //班级学生分页
+    @Override
+    public List<StudentEntity> getStudentPagingClassId(Integer classId, Integer count) {
+        return studentMapper.getStudentPagingClassId(classId, ((count - 1) * 3));
+    }
+
+    //查询总条数
+    @Override
+    public Integer getSum(Integer classId) {
+        return studentMapper.getSum(classId);
     }
 }
