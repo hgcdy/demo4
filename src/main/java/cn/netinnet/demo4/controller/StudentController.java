@@ -21,9 +21,6 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
-    //当前页码
-    private static Integer COUNT;
-
     @Autowired
     private StudentService studentService;
     @Autowired
@@ -103,11 +100,6 @@ public class StudentController {
     //插入单条记录
     @PostMapping("insert")
     public ResultModel studentInsert(StudentEntity studentEntity) {
-        Date date = new Date();
-        studentEntity.setModifyUserId(studentEntity.getCreateUserId());
-        studentEntity.setModifyTime(date);
-        studentEntity.setCreateTime(date);
-        studentEntity.setDelFlag("0");
         //若有字段为空，跳出
         try {
             int i = studentService.insertStudent(studentEntity);

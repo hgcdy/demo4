@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>教师</title>
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{css/student.css}">
+    <script th:src="@{js/jQuery3.6.0.js}"></script>
+    <script th:src="@{js/teacher.js}"></script>
+    <script th:src="@{bootstrap/js/bootstrap.js}"></script>
+</head>
+<body>
+<div class="card-body">
+    <table class="table table-bordered" id="table">
+        <tr>
+            <td>教师id</td>
+            <td>教师姓名</td>
+            <td>教师账号</td>
+            <td>教师密码</td>
+            <td>操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-info" id="insert">添加</button>
+            </td>
+        </tr>
+        <tr th:each="teacher: ${teacherList}">
+            <td th:text="${teacher.id}"></td>
+            <td th:text="${teacher.teacherName}"></td>
+            <td th:text="${teacher.teacherCode}"></td>
+            <td th:text="${teacher.teacherPassword}"></td>
+            <td>
+                <button type="button" class="btn btn-info update">编辑</button>
+                <button type="button" class="btn btn-info delete">删除</button>
+            </td>
+        </tr>
+    </table>
+
+    <!--    分页-->
+    <div id="paging">
+        <button type="button" class="btn btn-info">上一页</button>
+        跳转至:<input type="text" th:value="${count}">
+        <button type="button" class="btn btn-info">确定</button>
+        <button type="button" class="btn btn-info">下一页</button>
+    </div>
+</div>
+
+    <!--编辑-->
+    <div class="card-body" id="div1">
+        <table class="table table-bordered">
+            <tr>
+                <td>用户id</td>
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>姓名</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>账号</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>修改者id</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <button type="button" class="btn btn-info" id="confirm">确定</button>
+                    <button type="button" class="btn btn-info" id="cancel">取消</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!--插入-->
+    <div class="card-body" id="div2">
+        <table class="table table-bordered">
+            <tr>
+                <td>姓名</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>账号</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>密码</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td>创建者id</td>
+                <td><input type="text">
+                    <p></p></td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <button type="button" class="btn btn-info" id="confirm1">确定</button>
+                    <button type="button" class="btn btn-info" id="cancel1">取消</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>

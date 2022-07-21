@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class ClassEntity extends Base{
     private String className;
-    private Integer count;
+    private Integer num;
 
-    public ClassEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, String className, Integer count) {
+    public ClassEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, String className, Integer num) {
         super(id, delFlag, createTime, createUserId, modifyTime, modifyUserId);
         this.className = className;
-        this.count = count;
+        this.num = num;
     }
 
     public ClassEntity() {
@@ -23,11 +23,11 @@ public class ClassEntity extends Base{
         this.className = groupName;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }

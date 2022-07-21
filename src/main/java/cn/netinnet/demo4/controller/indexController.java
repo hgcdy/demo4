@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/index")
+@RequestMapping("/")
 public class indexController {
 
     @Autowired
@@ -30,30 +30,18 @@ public class indexController {
     private TeacherService teacherService;
 
     //跳转至index页面
-    @GetMapping("")
-    public ModelAndView gotoindex() {
+    @GetMapping("index")
+    public ModelAndView gotoIndex() {
         ModelAndView modelAndView = new ModelAndView("/index");
-//        List<StudentEntity> studentList = studentService.getStudentAll();
-//        List<ClassEntity> classList = classService.getClassAll();
-//        modelAndView.addObject("studentList", studentList);
-//        modelAndView.addObject("classList", classList);
+//        ModelAndView modelAndView = new ModelAndView("/text");
         return modelAndView;
     }
 
-
-
-
-
-
-
-
-
-    //返回教师集合
-    @GetMapping("teacher")
-    public List<TeacherEntity> indexTeacher() {
-        List<TeacherEntity> teacherAll = teacherService.getTeacherAll();
-        return teacherAll;
+    //跳转至index页面
+    @GetMapping("text")
+    public ModelAndView gotoText() {
+        ModelAndView modelAndView = new ModelAndView("/text");
+        return modelAndView;
     }
-
 
 }

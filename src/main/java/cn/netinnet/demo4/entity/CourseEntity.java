@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class CourseEntity extends Base{
     private String courseName;
-    private String house_type;
+    private String houseType;
     //必修课程
     private String RequiredCourse;
 
-    public CourseEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, String courseName, String house_type, String requiredCourse) {
+    public CourseEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, String courseName, String houseType, String requiredCourse) {
         super(id, delFlag, createTime, createUserId, modifyTime, modifyUserId);
         this.courseName = courseName;
-        this.house_type = house_type;
+        this.houseType = houseType;
         RequiredCourse = requiredCourse;
     }
 
@@ -26,12 +26,12 @@ public class CourseEntity extends Base{
         this.courseName = courseName;
     }
 
-    public String getHouse_type() {
-        return house_type;
+    public String getHouseType() {
+        return houseType;
     }
 
-    public void setHouse_type(String house_type) {
-        this.house_type = house_type;
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
     }
 
     public String getRequiredCourse() {

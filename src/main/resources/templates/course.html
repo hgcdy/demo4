@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程</title>
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.css}">
+</head>
+<body>
+<div class="card-body">
+    <table class="table table-bordered" id="table">
+        <tr>
+            <td>课程id</td>
+            <td>课程名称</td>
+            <td>课程需要的教室类型</td>
+            <td>是否选修</td>
+        </tr>
+        <tr th:each="course: ${courseList}">
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.houseType}"></td>
+            <td th:text="${course.requiredCourse}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

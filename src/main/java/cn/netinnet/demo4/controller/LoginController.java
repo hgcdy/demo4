@@ -2,9 +2,10 @@ package cn.netinnet.demo4.controller;
 
 import cn.netinnet.demo4.constant.impl.ResultStatus;
 import cn.netinnet.demo4.entity.StudentEntity;
+import cn.netinnet.demo4.entity.TeacherEntity;
 import cn.netinnet.demo4.entity.UserEntity;
 import cn.netinnet.demo4.model.ResultModel;
-import cn.netinnet.demo4.sevice.UserService;
+import cn.netinnet.demo4.sevice.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 public class LoginController extends HttpServlet {
 
     @Autowired
-    private UserService userService;
+    private TeacherService teacherService;
 
     //跳转至login页面
     @GetMapping("")
@@ -27,11 +28,11 @@ public class LoginController extends HttpServlet {
 
     //登录验证
     @PostMapping("verify")
-    public ResultModel loginVerify(String userCode, String userPassword) {
-        UserEntity user = userService.getUser(userCode, userPassword);
-        if (user == null){
+    public ResultModel loginVerify(String teacherCode, String teacherPassword) {
+        TeacherEntity verify = teacherService.verify(teacherCode, teacherPassword);
+        if (verify == null){
             return ResultModel.error(ResultStatus.PARAM_ERROR);
         }
-        return ResultModel.ok(user);
+        return ResultModel.ok(verify);
     }
 }

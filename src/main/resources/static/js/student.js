@@ -9,7 +9,6 @@ $(document).ready(function () {
         url:"/student/sum",
         dataType: "json",
         type: "post",
-        data: {classId: id},
         success(data){
             sum = data;
         }

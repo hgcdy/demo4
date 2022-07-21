@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>教室</title>
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.css}">
+</head>
+<body>
+<div class="card-body">
+    <table class="table table-bordered" id="table">
+        <tr>
+            <td>教室id</td>
+            <td>教室名称</td>
+            <td>班级类型</td>
+            <td>班级座位</td>
+        </tr>
+        <tr th:each="house: ${houseList}">
+            <td th:text="${house.id}"></td>
+            <td th:text="${house.houseName}"></td>
+            <td th:text="${house.type}"></td>
+            <td th:text="${house.seat}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.netinnet.demo4.mapper.ClassMapper">
+<mapper namespace="cn.netinnet.demo4.mapper.CourseMapper">
 
-    <select id="getClassAll" resultType="cn.netinnet.demo4.entity.ClassEntity">
+    <select id="getCourseAll" resultType="cn.netinnet.demo4.entity.CourseEntity">
         SELECT *
-        FROM nin_class
+        FROM nin_course
         WHERE del_flag = "0"
     </select>
 </mapper>

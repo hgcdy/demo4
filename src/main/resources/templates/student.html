@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>学生</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{css/student.css}">
     <script th:src="@{js/jQuery3.6.0.js}"></script>
@@ -15,8 +15,7 @@
 <!--检索框-->
 <div id="search">
     <div class="btn-group col-md-1">
-        <button type="button" class="btn btn-info" id="insert">添加</button>
-        <br><br>
+        <br>
         <button type="button" class="btn btn-default dropdown-toggle btn-info"
                 data-toggle="dropdown" id="classChoice">
             班级 <span class="caret"></span>
@@ -63,7 +62,9 @@
             <td>性别</td>
             <td>年龄</td>
             <td>班级id</td>
-            <td>操作</td>
+            <td>操作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-info" id="insert">添加</button>
+            </td>
         </tr>
         <tr th:each="student: ${studentList}">
             <td th:text="${student.id}"></td>

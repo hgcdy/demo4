@@ -1,15 +1,15 @@
 $(document).ready(function () {
     $("#index").click(function (){
-        var userCode = $("#userCode").val();
-        var userPassword = $("#userPassword").val();
+        var teacherCode = $("#teacherCode").val();
+        var teacherPassword = $("#teacherPassword").val();
 
         $.ajax({
             url:"/login/verify",
             dataType: "json",
             type: "post",
             data: {
-                userCode: userCode,
-                userPassword: userPassword
+                teacherCode: teacherCode,
+                teacherPassword: teacherPassword
             },
             success: function (data){
                 if (data.code == 200){
