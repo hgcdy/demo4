@@ -8,6 +8,7 @@
     <script th:src="@{js/jQuery3.6.0.js}"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{js/student.js}"></script>
+<!--    <script th:src="@{require.js}" th:attr="data-main=@{js/student.js},defer=true"></script>-->
 
 </head>
 <body>
@@ -54,9 +55,7 @@
     <div class="col-md-2">
         <br>性别:
         <!--        <input type="text" id="sex">-->
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-            全选 <span class="caret"></span>
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">全选<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" id="sex">
             <li><a href="javaScript:void(0)">全选</a></li>

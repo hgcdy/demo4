@@ -1,3 +1,8 @@
+// require(['util'], function () {
+//
+// });
+
+
 $(document).ready(function () {
     //获取页数
     var count = parseInt($("#paging input").val())
@@ -36,7 +41,14 @@ $(document).ready(function () {
             data: {id: delId},
             success: function (data) {
                 if (data.code == 200) {
-                    $("#tr").empty();
+                    // $("#tr").empty();
+                    if ($("#table tr").length > 2 && count > 1){
+                        count = count - 1;
+                    }
+                    if (id == undefined || id == null) {
+                        window.location.href = "/student?count=" + count;
+                    } else
+                        window.location.href = "/student?classId=" + id + "&count=" + count;
                 }
             }
         })
@@ -253,6 +265,7 @@ $(document).ready(function () {
         $(input).val("");
     })
 
+    //条件检索男/女下拉框
     $("#sex a").click(function () {
         $("#sex").prev("button").text($(this).text());
     })
@@ -297,7 +310,7 @@ $(document).ready(function () {
         var studentName = $("#studentName").val();
         // var sex = $("#sex").val();
         var sex = $("#sex").prev("button").text();
-        if (sex == "全选") {
+        if (sex != "男" && sex != "女") {
             sex = "";
         }
         var age = $("#age").val();
