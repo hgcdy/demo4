@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     //获取页数
     var count = parseInt($("#paging input").val())
@@ -7,22 +6,22 @@ $(document).ready(function () {
     //获取记录总数
     var sum;
     $.ajax({
-        url:"/student/sum",
+        url: "/student/sum",
         dataType: "json",
         type: "post",
-        success(data){
+        success(data) {
             sum = data;
         }
     })
 
     //按钮禁用
-    function stop(){
-        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled',true);
+    function stop() {
+        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled', true);
     }
 
     //按钮启用
-    function start(){
-        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled',false);
+    function start() {
+        $("#insert, .delete, .update, #submit, #classChoice, #paging button").attr('disabled', false);
 
     }
 
@@ -71,11 +70,11 @@ $(document).ready(function () {
                 }
                 //对记录进行修改,验证
                 for (let i = 0; i < input.length; i++) {
-                    $(input[i]).keyup(function (){
-                        if (verify(input)){
-                            $("#confirm").attr('disabled',false);
-                        }else{
-                            $("#confirm").attr('disabled',true);
+                    $(input[i]).keyup(function () {
+                        if (verify(input)) {
+                            $("#confirm").attr('disabled', false);
+                        } else {
+                            $("#confirm").attr('disabled', true);
                         }
                     })
                 }
@@ -127,13 +126,13 @@ $(document).ready(function () {
     }
 
     //名字验证
-    function verifyName(obj){
+    function verifyName(obj) {
         var v = obj.val();
-        if (v == "" || v == null){
+        if (v == "" || v == null) {
             $(obj).next().text("不得为空");
-        }else if (v.length > 20){
+        } else if (v.length > 20) {
             $(obj).next().text("字段过长");
-        }else{
+        } else {
             $(obj).next().text("");
             return true;
         }
@@ -141,13 +140,13 @@ $(document).ready(function () {
     }
 
     //性别验证
-    function verifySex(obj){
+    function verifySex(obj) {
         var v = obj.val();
-        if (v == "" || v == null){
+        if (v == "" || v == null) {
             $(obj).next().text("不得为空");
-        }else if (v != "男" && v != "女"){
+        } else if (v != "男" && v != "女") {
             $(obj).next().text("字段错误(男/女)");
-        }else{
+        } else {
             $(obj).next().text("");
             return true;
         }
@@ -155,13 +154,13 @@ $(document).ready(function () {
     }
 
     //年龄验证
-    function verifyAge(obj){
+    function verifyAge(obj) {
         var v = obj.val();
-        if (v == "" || v == null){
+        if (v == "" || v == null) {
             $(obj).next().text("不得为空");
-        }else if (v <= 0 || v > 120){
+        } else if (v <= 0 || v > 120) {
             $(obj).next().text("年龄不在范围内");
-        }else{
+        } else {
             $(obj).next().text("");
             return true;
         }
@@ -169,15 +168,15 @@ $(document).ready(function () {
     }
 
     //id验证
-    function verifyId(obj){
+    function verifyId(obj) {
         var v = obj.val();
-        if (v == "" || v == null){
+        if (v == "" || v == null) {
             $(obj).next().text("不得为空");
-        }else if (v.length > 10){
+        } else if (v.length > 10) {
             $(obj).next().text("字段过长");
-        }else if(isNaN(v)){
+        } else if (isNaN(v)) {
             $(obj).next().text("请输入数字");
-        }else {
+        } else {
             $(obj).next().text("");
             return true;
         }
@@ -185,19 +184,19 @@ $(document).ready(function () {
     }
 
     //验证
-    function verify(obj){
+    function verify(obj) {
         if (verifyName($(obj[0])) && verifySex($(obj[1])) && verifyAge($(obj[2])) && verifyId($(obj[3])) && verifyId($(obj[4])))
             return true;
         return false;
     }
 
     //添加删除事件
-    $(".delete").click(function (){
+    $(".delete").click(function () {
         del($(this));
     });
 
     //添加编辑事件
-    $(".update").click(function (){
+    $(".update").click(function () {
         redact($(this));
     });
 
@@ -211,11 +210,11 @@ $(document).ready(function () {
         var input = $("#div2 input");
         for (let i = 0; i < input.length; i++) {
             //验证
-            $(input[i]).keyup(function (){
-                if (verify(input)){
-                    $("#confirm1").attr('disabled',false);
-                }else{
-                    $("#confirm1").attr('disabled',true);
+            $(input[i]).keyup(function () {
+                if (verify(input)) {
+                    $("#confirm1").attr('disabled', false);
+                } else {
+                    $("#confirm1").attr('disabled', true);
                 }
             })
         }
@@ -254,11 +253,53 @@ $(document).ready(function () {
         $(input).val("");
     })
 
+    $("#sex a").click(function () {
+        $("#sex").prev("button").text($(this).text());
+    })
+
+    //条件检索的id和classId验证
+    $("#id, #classId").keyup(function () {
+        var v = $(this).val();
+        if (v.length > 10) {
+            $(this).next().text("字段过长");
+        } else if (isNaN(v)) {
+            $(this).next().text("请输入数字");
+        } else {
+            $(this).next().text("");
+        }
+    });
+
+    //条件检索的age验证
+    $("#age").keyup(function () {
+        var v = $(this).val();
+        if (v == '') {
+            $(this).next().text("");
+        } else if (v <= 0 || v > 120) {
+            $(this).next().text("年龄不在范围内");
+        } else {
+            $(this).next().text("");
+        }
+    });
+
+    //条件检索的studentName验证
+    $("#studentName").keyup(function () {
+        var v = $(this).val();
+        if (v.length > 20) {
+            $(this).next().text("字段过长");
+        } else {
+            $(this).next().text("");
+        }
+    });
+
     //条件检索
     $("#submit").click(function () {
         var Id = $("#id").val();
         var studentName = $("#studentName").val();
-        var sex = $("#sex").val();
+        // var sex = $("#sex").val();
+        var sex = $("#sex").prev("button").text();
+        if (sex == "全选") {
+            sex = "";
+        }
         var age = $("#age").val();
         var classId = $("#classId").val();
         $.ajax({
@@ -275,7 +316,7 @@ $(document).ready(function () {
             success(data) {
                 //清除并生成新的数据，
                 $("#table tr:gt(0)").empty();
-                if (data.length){
+                if (data.length) {
                     for (let i = 0; i < data.length; i++) {
                         let td1 = "<td>" + data[i].id + "</td>";
                         let td2 = "<td>" + data[i].studentName + "</td>";
@@ -289,12 +330,12 @@ $(document).ready(function () {
                         $("#table").append(tr);
                     }
                     //添加删除事件
-                    $(".delete").click(function (){
+                    $(".delete").click(function () {
                         del($(this));
                     });
 
                     //添加编辑事件
-                    $(".update").click(function (){
+                    $(".update").click(function () {
                         redact($(this));
                     });
                 }
@@ -303,7 +344,7 @@ $(document).ready(function () {
     })
 
     //切换班级
-    $("ul li").click(function () {
+    $("#classdiv li").click(function () {
         id = $(this).attr("id");
         if (id == undefined || id == null) {
             window.location.href = "/student";
@@ -313,8 +354,8 @@ $(document).ready(function () {
 
     //切换页码
     //点击上一页
-    $("#paging button:first").click(function (){
-        if (count > 1){
+    $("#paging button:first").click(function () {
+        if (count > 1) {
             count = count - 1;
             $("#paging input").val(count);
             if (id == undefined || id == null) {
@@ -324,7 +365,7 @@ $(document).ready(function () {
         }
     })
     //点击下一页
-    $("#paging button:last").click(function (){
+    $("#paging button:last").click(function () {
         if (count < (sum / 3)) {
             count = count + 1;
             $("#paging input").val(count);
@@ -336,9 +377,9 @@ $(document).ready(function () {
 
     })
     //跳转
-    $("#paging button:eq(1)").click(function (){
+    $("#paging button:eq(1)").click(function () {
         var v = parseInt($("#paging input").val());
-        if (v != null && v > 0 && v < (sum / 3 + 1)){
+        if (v != null && v > 0 && v < (sum / 3 + 1)) {
             count = v;
             if (id == undefined || id == null) {
                 window.location.href = "/student?count=" + count;

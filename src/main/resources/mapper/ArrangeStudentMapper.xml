@@ -11,35 +11,35 @@
     </select>
 
     <!--    查询指定学生-->
-        <select id="getArrangeStudent" resultType="cn.netinnet.demo4.entity.ArrangeStudentEntity">
-            SELECT *
-            FROM nin_arrange_student
-            <where>
-            del_flag = "0"
-            <if test="id != null">
-                 AND id = #{id}
-            </if>
-            <if test="classId != null">
-                 AND class_id = #{classId}
-            </if>
-            <if test="studentId != null">
-                 AND student_id = #{studentId}
-            </if>
-            <if test="courseId != null">
-                 AND course_id = #{courseId}
-            </if>
-            <if test="requiredCourse != ''">
-                 AND required_course = #{requiredCourse}
-            </if>
-            <if test="houseId != null">
-                 AND house_id = #{houseId}
-            </if>
-            <if test="week != ''">
-                 AND week = #{week}
-            </if>
-            <if test="timeCode != ''">
-                AND time_code = #{timeCode}
-            </if>
-            </where>
-        </select>
+    <select id="getArrangeStudent" resultType="cn.netinnet.demo4.entity.ArrangeStudentEntity">
+        SELECT *
+        FROM nin_arrange_student
+        <where>
+        del_flag = "0"
+        <if test="id != null">
+             AND id = #{id}
+        </if>
+        <if test="classId != null">
+             AND class_id = #{classId}
+        </if>
+        <if test="studentId != null">
+             AND student_id = #{studentId}
+        </if>
+        <if test="courseId != null">
+             AND course_id = #{courseId}
+        </if>
+        <if test="requiredCourse != ''">
+             AND required_course = #{requiredCourse}
+        </if>
+        <if test="houseId != null">
+             AND house_id = #{houseId}
+        </if>
+        <if test="week != ''">
+             AND week = #{week}
+        </if>
+        <if test="timeCode != ''">
+            AND time_code = #{timeCode}
+        </if>
+        </where>
+    </select>
 </mapper>

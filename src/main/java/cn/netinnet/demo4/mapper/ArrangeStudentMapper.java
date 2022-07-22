@@ -1,7 +1,6 @@
 package cn.netinnet.demo4.mapper;
 
 import cn.netinnet.demo4.entity.ArrangeStudentEntity;
-import cn.netinnet.demo4.entity.ClassEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

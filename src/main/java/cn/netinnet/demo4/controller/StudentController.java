@@ -48,13 +48,13 @@ public class StudentController {
         ModelAndView modelAndView = new ModelAndView("/student");
         List<ClassEntity> classList = classService.getClassAll();
         List<StudentEntity> studentList;
-        if (count == null){
+        if (count == null) {
             count = 1;
         }
-        if (classId == null){
+        if (classId == null) {
 //            studentList = studentService.getStudentAll();
             studentList = studentService.getStudentPaging(count);
-        }else{
+        } else {
 //            studentList = studentService.getStudentClassId(classId);
             studentList = studentService.getStudentPagingClassId(classId, count);
         }
@@ -114,20 +114,20 @@ public class StudentController {
 
     //检索查询
     @PostMapping("search")
-    public List<StudentEntity> studentSearch(StudentEntity studentEntity){
+    public List<StudentEntity> studentSearch(StudentEntity studentEntity) {
         List<StudentEntity> studentList = studentService.getStudentSearch(studentEntity);
         return studentList;
     }
 
     //分页查询
     @PostMapping("paging")
-    public List<StudentEntity> studentPaging(Integer count){
+    public List<StudentEntity> studentPaging(Integer count) {
         return studentService.getStudentPaging(count);
     }
 
     //查询总数
     @PostMapping("sum")
-    public Integer getSum(Integer classId){
+    public Integer getSum(Integer classId) {
         return studentService.getSum(classId);
     }
 

@@ -1,4 +1,4 @@
-#div1,#div2 {
+#div1, #div2 {
     /*height: 470px;*/
     width: 450px;
     line-height: 30px;
@@ -11,9 +11,10 @@
     background-color: #f2e7c3;
     display: none;
 }
+
 #search {
-    width:1462px;
-    height:80px;
+    width: 1462px;
+    height: 80px;
 }
 
 #div1 input, #div2 input {

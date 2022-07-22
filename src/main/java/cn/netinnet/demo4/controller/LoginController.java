@@ -5,7 +5,10 @@ import cn.netinnet.demo4.entity.TeacherEntity;
 import cn.netinnet.demo4.model.ResultModel;
 import cn.netinnet.demo4.sevice.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
@@ -28,7 +31,7 @@ public class LoginController extends HttpServlet {
     @PostMapping("verify")
     public ResultModel loginVerify(String teacherCode, String teacherPassword) {
         TeacherEntity verify = teacherService.verify(teacherCode, teacherPassword);
-        if (verify == null){
+        if (verify == null) {
             return ResultModel.error(ResultStatus.PARAM_ERROR);
         }
         return ResultModel.ok(verify);

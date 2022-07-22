@@ -2,7 +2,6 @@ package cn.netinnet.demo4.controller;
 
 
 import cn.netinnet.demo4.constant.impl.ResultStatus;
-import cn.netinnet.demo4.entity.StudentEntity;
 import cn.netinnet.demo4.entity.TeacherEntity;
 import cn.netinnet.demo4.model.ResultModel;
 import cn.netinnet.demo4.sevice.TeacherService;
@@ -57,7 +56,7 @@ public class TeacherController {
     @PostMapping("delete")
     public ResultModel teacherDelete(Integer id) {
         int i = teacherService.deleteTeacher(id);
-        if (i > 0){
+        if (i > 0) {
             return ResultModel.ok();
         }
         return ResultModel.error(ResultStatus.DELETE_ERROR);
@@ -67,7 +66,7 @@ public class TeacherController {
     @PostMapping("update")
     public ResultModel teacherUpdate(TeacherEntity teacherEntity) {
         int i = teacherService.updateTeacher(teacherEntity);
-        if (i > 0){
+        if (i > 0) {
             return ResultModel.ok();
         }
         return ResultModel.error(ResultStatus.UPDATE_ERROR);
@@ -85,7 +84,7 @@ public class TeacherController {
 
     //查询总数
     @PostMapping("sum")
-    public Integer getSum(){
+    public Integer getSum() {
         return teacherService.getSum();
     }
 

@@ -1,6 +1,5 @@
 package cn.netinnet.demo4.sevice;
 
-import cn.netinnet.demo4.entity.ClassEntity;
 import cn.netinnet.demo4.entity.HouseEntity;
 
 import java.util.List;

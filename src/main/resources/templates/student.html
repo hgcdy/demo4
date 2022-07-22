@@ -16,7 +16,7 @@
 <!--检索框-->
 
 <div id="search">
-    <div class="btn-group col-md-1">
+    <div class="btn-group col-md-1" id="classdiv">
         <br>
         <button type="button" class="btn btn-default dropdown-toggle btn-info"
                 data-toggle="dropdown" id="classChoice">
@@ -25,41 +25,48 @@
         <ul class="dropdown-menu" role="menu" th:id="${classId}">
             <li><a href="javaScript:void(0)" id="0">所有</a></li>
             <li th:each="class: ${classList}" th:id="${class.id}">
-                <a  th:text="${class.className}" href="javaScript:void(0)"></a>
+                <a th:text="${class.className}" href="javaScript:void(0)"></a>
             </li>
         </ul>
+    </div>
 
-    </div>
     <div class="col-md-2">
-        <br>学生id:<br>
+        学生id:
         <input type="text" id="id">
+        <p></p>
     </div>
     <div class="col-md-2">
-        <br>姓名:<br>
+        姓名:
         <input type="text" id="studentName">
+        <p></p>
+    </div>
+
+    <div class="col-md-2">
+        年龄:
+        <input type="text" id="age">
+        <p></p>
     </div>
     <div class="col-md-2">
-        <br>性别:<br>
-<!--        <input type="text" id="sex">-->
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            男 <span class="caret"></span>
+        班级id:
+        <input type="text" id="classId">
+        <p></p>
+    </div>
+    <div class="col-md-2">
+        <br>性别:
+        <!--        <input type="text" id="sex">-->
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            全选 <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" id="sex">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a href="javaScript:void(0)">全选</a></li>
+            <li><a href="javaScript:void(0)">男</a></li>
+            <li><a href="javaScript:void(0)">女</a></li>
         </ul>
-    </div>
-    <div class="col-md-2">
-        <br>年龄:<br>
-        <input type="text" id="age">
-    </div>
-    <div class="col-md-2">
-        <br>班级id:<br>
-        <input type="text" id="classId">
     </div>
     <div class="col-md-1">
         <br>
-       <button class="btn btn-info" id="submit">确定</button>
+        <button class="btn btn-info" id="submit">确定</button>
     </div>
 </div>
 
@@ -87,7 +94,7 @@
             </td>
         </tr>
     </table>
-<!--    分页-->
+    <!--    分页-->
     <div id="paging">
         <button type="button" class="btn btn-info">上一页</button>
         跳转至:<input type="text" th:value="${count}">
@@ -98,30 +105,35 @@
 
 <!--编辑-->
 <div class="card-body" id="div1">
-    <table  class="table table-bordered" >
+    <table class="table table-bordered">
         <tr>
             <td>用户id</td>
             <td><p></p></td>
         </tr>
         <tr>
             <td>姓名</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>性别</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>年龄</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>班级id</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>修改者id</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td colspan=2>
@@ -134,26 +146,31 @@
 
 <!--插入-->
 <div class="card-body" id="div2">
-    <table  class="table table-bordered" >
+    <table class="table table-bordered">
         <tr>
             <td>姓名</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>性别</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>年龄</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>班级id</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td>创建者id</td>
-            <td><input type="text"><p></p></td>
+            <td><input type="text">
+                <p></p></td>
         </tr>
         <tr>
             <td colspan=2>

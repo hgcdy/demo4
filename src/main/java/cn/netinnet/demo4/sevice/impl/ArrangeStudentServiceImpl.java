@@ -1,10 +1,10 @@
 package cn.netinnet.demo4.sevice.impl;
 
-import cn.netinnet.demo4.entity.*;
+import cn.netinnet.demo4.entity.ArrangeStudentEntity;
+import cn.netinnet.demo4.entity.CourseEntity;
+import cn.netinnet.demo4.entity.HouseEntity;
 import cn.netinnet.demo4.mapper.*;
-import cn.netinnet.demo4.model.ResultModel;
 import cn.netinnet.demo4.sevice.ArrangeStudentService;
-import cn.netinnet.demo4.sevice.ArrangeTeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,14 +30,14 @@ public class ArrangeStudentServiceImpl implements ArrangeStudentService {
     }
 
     @Override
-    public Integer inArrangeStudent(ArrangeStudentEntity ase){
+    public Integer inArrangeStudent(ArrangeStudentEntity ase) {
         //判断是否存在
         //。。。
 
         //ase课程教室的类型（得到课程教室表进行对比）
         CourseEntity courseId = courseMapper.getCourseId(ase.getCourseId());
         HouseEntity houseId = houseMapper.getHouseId(ase.getHouseId());
-        if (!courseId.getHouseType().equals(houseId.getType())){
+        if (!courseId.getHouseType().equals(houseId.getType())) {
             return 0;
         }
 //        同一时间，同一教室是否已有安排课程（sql查询教室是否有记录返回）
@@ -45,13 +45,13 @@ public class ArrangeStudentServiceImpl implements ArrangeStudentService {
         newase.setWeek(ase.getWeek());
         newase.setTimeCode(ase.getTimeCode());
         newase.setHouseId(ase.getHouseId());
-        if (arrangeStudentMapper.getArrangeStudent(newase).size() > 0){
+        if (arrangeStudentMapper.getArrangeStudent(newase).size() > 0) {
             return 0;
         }
 
 
         //必修是1，选修是0
-        if (ase.getRequiredCourse().equals("0")){
+        if (ase.getRequiredCourse().equals("0")) {
 
         }
 

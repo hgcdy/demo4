@@ -2,7 +2,7 @@ package cn.netinnet.demo4.entity;
 
 import java.util.Date;
 
-public class ArrangeStudentEntity extends Base{
+public class ArrangeStudentEntity extends Base {
     private Integer classId;
     private Integer studentId;
     private Integer courseId;

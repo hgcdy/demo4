@@ -2,7 +2,7 @@ package cn.netinnet.demo4.entity;
 
 import java.util.Date;
 
-public class ClassEntity extends Base{
+public class ClassEntity extends Base {
     private String className;
     private Integer num;
 

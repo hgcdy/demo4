@@ -2,7 +2,7 @@ package cn.netinnet.demo4.entity;
 
 import java.util.Date;
 
-public class TeacherEntity extends Base{
+public class TeacherEntity extends Base {
     private String teacherName;
     private String teacherCode;
     private String teacherPassword;

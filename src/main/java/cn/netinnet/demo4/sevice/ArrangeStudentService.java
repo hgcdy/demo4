@@ -1,7 +1,6 @@
 package cn.netinnet.demo4.sevice;
 
 import cn.netinnet.demo4.entity.ArrangeStudentEntity;
-import cn.netinnet.demo4.model.ResultModel;
 
 import java.util.List;
 

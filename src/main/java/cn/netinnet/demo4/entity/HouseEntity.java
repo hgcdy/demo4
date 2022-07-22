@@ -2,7 +2,7 @@ package cn.netinnet.demo4.entity;
 
 import java.util.Date;
 
-public class HouseEntity extends Base{
+public class HouseEntity extends Base {
     private String houseName;
     private String type;
     private Integer seat;

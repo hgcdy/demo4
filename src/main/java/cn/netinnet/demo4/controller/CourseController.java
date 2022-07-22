@@ -1,9 +1,7 @@
 package cn.netinnet.demo4.controller;
 
 import cn.netinnet.demo4.entity.CourseEntity;
-import cn.netinnet.demo4.entity.HouseEntity;
 import cn.netinnet.demo4.sevice.CourseService;
-import cn.netinnet.demo4.sevice.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
