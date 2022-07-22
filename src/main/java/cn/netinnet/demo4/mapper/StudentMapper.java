@@ -37,4 +37,7 @@ public interface StudentMapper {
 
     //查询总条数
     public Integer getSum(Integer classId);
+
+    //查询是否有重复数据（名字字段）
+    public Integer getRepetition(StudentEntity studentEntity);
 }

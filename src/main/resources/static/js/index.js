@@ -3,6 +3,8 @@ $(document).ready(function () {
         window.location.href = "/login";
     })
 
+
+
     function fun(obj, path){
         $("iframe").attr("src", path);
         $("a").removeClass("disabled");
@@ -12,8 +14,12 @@ $(document).ready(function () {
                 $(this).addClass("disabled");
                 $("iframe").attr("src", path);
             })
+            var img = $("<img src='bootstrap/img/shut.jpg'>").click(function (){
+                $(this).prev().remove();
+                $(this).remove();
+            })
             var li = $("<li></li>").attr("class", "nav-item").append(a);
-            $("#ul").append(li);
+            $("#ul").append(li, img);
         }else{
             $("#" + path).addClass("disabled");
         }

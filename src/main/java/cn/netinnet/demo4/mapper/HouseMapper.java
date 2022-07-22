@@ -9,6 +9,9 @@ import java.util.List;
 @Mapper
 public interface HouseMapper {
 
-    //查询所有班级
+    //查询所有教室
     public List<HouseEntity> getHouseAll();
+
+    //查询指定id
+    public HouseEntity getHouseId(Integer id);
 }

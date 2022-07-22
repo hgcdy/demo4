@@ -81,7 +81,7 @@
    </select>
 
 
-      <!--查询指定id学生-->
+      <!--验证账户密码-->
    <select id="verify" resultType="cn.netinnet.demo4.entity.TeacherEntity">
        SELECT *
        FROM nin_teacher

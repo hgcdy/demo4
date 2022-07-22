@@ -9,4 +9,11 @@
         FROM nin_house
         WHERE del_flag = "0"
     </select>
+
+    <select id="getHouseId" resultType="cn.netinnet.demo4.entity.HouseEntity">
+        SELECT *
+        FROM nin_house
+        WHERE del_flag = "0"
+        AND id = #{id}
+    </select>
 </mapper>

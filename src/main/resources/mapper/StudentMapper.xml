@@ -105,6 +105,7 @@
              AND class_id = #{classId}
         </if>
         </where>
+
     </select>
 
         <!--分页查询学生-->
@@ -134,5 +135,15 @@
             AND class_id = #{classId}
         </if>
     </select>
+
+<!-- 查询名字是否重复，返回记录条数（id不相同，名字相同）-->
+    <select id="getRepetition" resultType="java.lang.Integer">
+        SELECT COUNT(id)
+        FROM nin_student
+        WHERE del_flag = "0"
+        AND id != #{id}
+        AND student_name = #{studentName}
+    </select>
+
 </mapper>
 

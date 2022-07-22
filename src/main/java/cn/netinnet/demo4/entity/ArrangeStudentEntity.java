@@ -6,17 +6,17 @@ public class ArrangeStudentEntity extends Base{
     private Integer classId;
     private Integer studentId;
     private Integer courseId;
-    private String required;
+    private String requiredCourse;
     private Integer houseId;
     private String week;
     private String timeCode;
 
-    public ArrangeStudentEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, Integer classId, Integer studentId, Integer courseId, String required, Integer houseId, String week, String timeCode) {
+    public ArrangeStudentEntity(Integer id, String delFlag, Date createTime, Integer createUserId, Date modifyTime, Integer modifyUserId, Integer classId, Integer studentId, Integer courseId, String requiredCourse, Integer houseId, String week, String timeCode) {
         super(id, delFlag, createTime, createUserId, modifyTime, modifyUserId);
         this.classId = classId;
         this.studentId = studentId;
         this.courseId = courseId;
-        this.required = required;
+        this.requiredCourse = requiredCourse;
         this.houseId = houseId;
         this.week = week;
         this.timeCode = timeCode;
@@ -49,12 +49,12 @@ public class ArrangeStudentEntity extends Base{
         this.courseId = courseId;
     }
 
-    public String getRequired() {
-        return required;
+    public String getRequiredCourse() {
+        return requiredCourse;
     }
 
-    public void setRequired(String required) {
-        this.required = required;
+    public void setRequiredCourse(String requiredCourse) {
+        this.requiredCourse = requiredCourse;
     }
 
     public Integer getHouseId() {

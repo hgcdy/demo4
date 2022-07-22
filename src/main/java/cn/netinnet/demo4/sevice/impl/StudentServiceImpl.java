@@ -42,13 +42,19 @@ public class StudentServiceImpl implements StudentService {
     //修改
     @Override
     public int updateStudent(StudentEntity studentEntity) {
-        return studentMapper.updateStudent(studentEntity);
+        //判断是否有重复
+        if (studentMapper.getRepetition(studentEntity) == 0) {
+            return studentMapper.updateStudent(studentEntity);
+        } else {
+            return 0;
+        }
     }
 
     //插入
     @Override
     public int insertStudent(StudentEntity studentEntity) {
-        if (repetition(studentEntity)) {
+        //判断是否有重复
+        if (studentMapper.getRepetition(studentEntity) == 0) {
             Date date = new Date();
             studentEntity.setModifyUserId(studentEntity.getCreateUserId());
             studentEntity.setModifyTime(date);
@@ -83,17 +89,5 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Integer getSum(Integer classId) {
         return studentMapper.getSum(classId);
-    }
-
-    //查询是否有名字重复
-    public Boolean repetition(StudentEntity studentEntity) {
-        List<StudentEntity> studentAll = studentMapper.getStudentAll();
-        for (StudentEntity s :
-                studentAll) {
-            if (studentEntity.getStudentName().equals(s.getStudentName())) {
-                return false;
-            }
-        }
-        return true;
     }
 }

@@ -12,4 +12,9 @@ iframe {
     scrolling: no;
 }
 
+#ul li {
+    background-color: #cdcdcd;
+    border-left: #000 solid 2px;
+}
+
 

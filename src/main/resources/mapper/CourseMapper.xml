@@ -9,4 +9,11 @@
         FROM nin_course
         WHERE del_flag = "0"
     </select>
+
+    <select id="getCourseId" resultType="cn.netinnet.demo4.entity.CourseEntity">
+        SELECT *
+        FROM nin_course
+        WHERE del_flag = "0"
+        AND id = #{id}
+    </select>
 </mapper>

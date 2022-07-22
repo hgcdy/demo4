@@ -10,4 +10,7 @@ public interface ClassMapper {
 
     //查询所有班级
     public List<ClassEntity> getClassAll();
+
+    //查询指定id班级
+    public ClassEntity getClassId();
 }
